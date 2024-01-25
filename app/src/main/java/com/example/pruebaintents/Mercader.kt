@@ -64,7 +64,7 @@ class Mercader : AppCompatActivity() {
             precio.visibility=View.VISIBLE
 
 
-            // Mostrar los botones Comprar, Vender y Cancelar
+
             btnComprar.visibility = View.VISIBLE
             btnVender.visibility = View.VISIBLE
             btnCancelar.visibility = View.VISIBLE
@@ -87,10 +87,10 @@ class Mercader : AppCompatActivity() {
 
         btnVender.setOnClickListener {
             if (personaje.getMochila().getContenido().isNotEmpty()) {
-                // Cambiar la imagen del Mercader por la de una mochila
+
                 cambiarImagenYMostrarPrecio(personaje.getMochila().getContenido()[0])
                 personaje.getMochila().getContenido().removeAt(0)
-                // Por ejemplo, toma el primer artículo de la mochila
+
                 Toast.makeText(this, "Primer objeto de tu inventario vendido", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "No tienes objetos en la mochila para vender", Toast.LENGTH_SHORT).show()
@@ -98,18 +98,18 @@ class Mercader : AppCompatActivity() {
         }
 
         btnCancelar.setOnClickListener {
-            // Restaurar la imagen del Mercader y ocultar la información de precio
+
             onBackPressed()
         }
 
     }
     private fun cambiarImagenYMostrarPrecio(articulo: Articulo) {
         val imagenObjeto = findViewById<ImageView>(R.id.mercader)
-        // Cambiar la imagen del Mercader por la del objeto
+
         imagenObjeto.setImageResource(articulo.getUrl())
 
         val precioTextView = findViewById<TextView>(R.id.precioTextView)
-        // Mostrar el precio del objeto
+
         precioTextView.text = "Precio: ${articulo.getPrecio()}"
         precioTextView.visibility = View.VISIBLE
 
